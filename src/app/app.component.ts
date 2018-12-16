@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'desafioFrontEnd';
+  public closeMenu = () => {
+    document.querySelector('#nav-mobile').classList.remove('open-menu');
+  }
 }

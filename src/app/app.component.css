@@ -1,0 +1,9 @@
+.main-page {
+    margin-left: 24%;
+}
+
+@media only screen and (max-width: 991px) {
+    .main-page {
+        margin-left: 5%;
+    }
+}

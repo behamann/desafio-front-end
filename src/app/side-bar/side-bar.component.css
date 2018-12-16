@@ -1,0 +1,46 @@
+nav {
+    height: 64px;
+}
+
+.brand-logo {
+    background-color: #ee6e73;
+    height: 64.5px;
+}
+.brand-logo > h3 {
+    color: #fff;
+    margin: 0;
+    padding: 4%;
+}
+
+.side-nav li.logo > a:hover {
+    background-color: rgba(238, 110, 115, 0.75);
+}
+
+.open-menu {
+    transform: translateX(0%);
+}
+
+.menu-transition {
+    transition: all 500ms ease-in-out;
+}
+
+.button-collapse {
+    position: absolute;
+    top: 2.5%;
+    left: 10%;
+    width: 30px;
+}
+
+.button-collapse > a > i {
+    color: #fff;
+}
+
+.crumb-margin {
+    margin-left: 13%;
+}
+
+@media only screen and (max-width: 991px) {
+    .crumb-margin {
+        margin-left: 5%;
+    }
+}

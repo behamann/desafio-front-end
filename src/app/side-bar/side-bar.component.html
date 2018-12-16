@@ -1,0 +1,22 @@
+<nav class="top-nav" (click)="closeMenu()">
+    <div class="container">
+        <div class="nav-wrapper">
+            <div class="col s12 crumb-margin">
+                <a [routerLink]="['/']" class="breadcrumb">Front End</a>
+                <a [routerLink]="[curentBread]" class="breadcrumb">{{curentBreadName}}</a>
+            </div>
+        </div>
+    </div>
+</nav>
+<div class="container button-collapse">
+    <a href="#" class="hide-on-large-only" (click)="showMenu()">
+        <i class="material-icons">menu</i>
+    </a>
+</div>
+<ul id="nav-mobile" class="side-nav fixed menu-transition">
+    <li class="logo" (click)="closeMenu()">
+        <a id="logo-container" href="/" class="brand-logo"><h3>Front End</h3></a>
+    </li>
+    <li class="bold" (click)="closeMenu()"><a routerLink="/products" routerLinkActive="active" class="waves-effect waves-teal">Listar Produtos</a></li>
+    <li class="bold" (click)="closeMenu()"><a routerLink="/products/new" routerLinkActive="active" class="waves-effect waves-teal">Cadastrar Produtos</a></li>
+</ul>

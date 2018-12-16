@@ -1,0 +1,130 @@
+<h5>{{ title }}</h5>
+<div class="row">
+  <form materialize class="col s12" [formGroup]="form" (ngSubmit)="save()">
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="material-icons prefix">account_circle</i>
+        <input id="name" type="text" class="validate" [(ngModel)]="product.name" formControlName="name"
+               [class.invalid]="form.controls['name'].touched && !form.controls['name'].valid" data-length="50">
+        <label for="name" [class.active]="product.name" data-error="Campo obrigatório e de no máximo 50 caracteres.">
+          Nome <span class="required-symbol">*</span>
+        </label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="material-icons prefix measure-icon-margin">view_module</i>
+        <select id="measurement" class="validate browser-default" [(ngModel)]="product.measurement" formControlName="measurement"
+                [class.invalid]="form.controls['measurement'].touched && !form.controls['measurement'].valid"
+                (ngModelChange)="changeUnit($event)">
+          <option value="" disabled selected>Escolha uma opção</option>
+          <option value="Lt">Litro</option>
+          <option value="Kg">Quilograma</option>
+          <option value="Un">Unidade</option>
+        </select>
+        <label for="measurement" class="select-label" data-error="Campo obrigatório">Unidade de medida <span class="required-symbol">*</span></label>
+      </div>
+    </div>
+    <div class="row mb-0">
+      <div class="input-field col s12">
+        <i class="material-icons prefix">looks_one</i>
+        <input currencyMask id="quantity" class="validate" [(ngModel)]="product.quantity" formControlName="quantity"
+               [class.invalid]="form.controls['quantity'].touched && !form.controls['quantity'].valid"
+               [options]=quantityOptions>
+        <label for="quantity" [class.active]="product.quantity" data-error="">
+          Quantidade
+        </label>
+      </div>
+    </div>
+    <div class="row mb-0">
+      <div class="input-field col s12">
+        <i class="material-icons prefix">attach_money</i>
+        <input currencyMask id="price" class="validate" [(ngModel)]="product.price" formControlName="price"
+               [class.invalid]="form.controls['price'].touched && !form.controls['price'].valid"
+               [options]="{
+                    align: 'left',
+                    allowNegative: false,
+                    decimal: ',',
+                    precision: 2,
+                    prefix: 'R$ ',
+                    suffix: '',
+                    thousands: '.'
+                }"
+        >
+        <label for="price" [class.active]="product.price" data-error="Campo obrigatório.">
+          Preço <span class="required-symbol">*</span>
+        </label>
+      </div>
+    </div>
+    <div class="row h-60">
+      <div class="input-field col s12">
+        <i class="material-icons prefix">receipt</i>
+        <input id="perishable" type="checkbox" class="filled-in" [(ngModel)]="product.perishable" formControlName="perishable"
+               [class.invalid]="form.controls['perishable'].touched && !form.controls['perishable'].valid"/>
+        <span class="checkbox-desc">Produto perecível</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="material-icons prefix">date_range</i>
+        <input id="validity_date" materialize="pickadate" class="datepicker" type="text"
+          [(ngModel)]="product.validity_date" placeholder="Selecione a Data" formControlName="validity_date"
+          [class.invalid]="form.controls['validity_date'].touched && !form.controls['validity_date'].valid"
+          [materializeParams]="[{
+            selectMonths: true, selectYears: true,
+            labelMonthNext: 'Próximo Mês',
+            labelMonthPrev: 'Mês anterior',
+            labelMonthSelect: 'Selecione um mês',
+            labelYearSelect: 'Selecione um ano',
+            today: 'Hoje',
+            clear: 'Apagar',
+            close: 'Fechar',
+            monthsFull: [ 'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro' ],
+            monthsShort: [ 'Jan', 'Fev', 'Mar', 'Abr', 'Maio', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez' ],
+            weekdaysFull: [ 'Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado' ],
+            weekdaysShort: [ 'Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb' ],
+            weekdaysLetter: [ 'D', 'S', 'T', 'Q', 'Q', 'S', 'S' ],
+            format: 'dd/mm/yyyy'
+          }]"
+        >
+        <label for="validity_date" [class.active]="true" data-error="Este produto está vencido.">
+          Data de validade
+        </label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="material-icons prefix">date_range</i>
+        <input id="fabrication_date" materialize="pickadate" class="datepicker" type="text"
+          [(ngModel)]="product.fabrication_date" placeholder="Selecione a Data" formControlName="fabrication_date"
+          [class.invalid]="form.controls['fabrication_date'].touched && !form.controls['fabrication_date'].valid"
+          [materializeParams]="[{
+            selectMonths: true, selectYears: true,
+            labelMonthNext: 'Próximo Mês',
+            labelMonthPrev: 'Mês anterior',
+            labelMonthSelect: 'Selecione um mês',
+            labelYearSelect: 'Selecione um ano',
+            today: 'Hoje',
+            clear: 'Apagar',
+            close: 'Fechar',
+            monthsFull: [ 'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro' ],
+            monthsShort: [ 'Jan', 'Fev', 'Mar', 'Abr', 'Maio', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez' ],
+            weekdaysFull: [ 'Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado' ],
+            weekdaysShort: [ 'Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb' ],
+            weekdaysLetter: [ 'D', 'S', 'T', 'Q', 'Q', 'S', 'S' ],
+            format: 'dd/mm/yyyy'
+          }]"
+        >
+        <label for="validity_date" [class.active]="true" data-error="Campo obrigatório, e a data não pode ser superior a data de validade.">
+          Data de fabricação <span class="required-symbol">*</span>
+        </label>
+      </div>
+    </div>
+    <div class="row">
+      <a class="waves-effect waves-light btn submit-margin grey" [routerLink]="['/products']">Cancelar</a>
+      <button class="btn waves-effect waves-light submit-margin" type="submit" [disabled]="!form.valid">
+      Enviar <i class="material-icons right">send</i>
+      </button>
+    </div>
+  </form>
+</div>

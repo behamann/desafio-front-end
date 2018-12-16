@@ -1,0 +1,51 @@
+.input-field > select.browser-default {
+    display: block;
+    position: relative;
+    margin-left: 3rem;
+    width: calc(100% - 3rem);
+    height: 100%;
+    pointer-events: all;
+    opacity: 100;
+}
+
+.select-label {
+    margin-top: -37px;
+}
+
+.submit-margin {
+    margin-left: 1%;
+}
+
+select {
+    border-color: grey;
+}
+
+input[type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+    position: relative;
+    opacity: 100;
+    pointer-events: all;
+    width: 20px;
+    margin-top: 1%;
+    transform: scale(1.5);
+}
+
+.mb-0 {
+    margin-bottom: 0;
+}
+
+.measure-icon-margin {
+    margin-top: -1.5%;
+}
+
+.h-60 {
+    height: 60px;
+}
+
+.checkbox-desc {
+    margin-left: 1.5%;
+    color: grey;
+}
+
+.required-symbol {
+    color: red;
+}
