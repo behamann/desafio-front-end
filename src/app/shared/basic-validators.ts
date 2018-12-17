@@ -17,15 +17,18 @@ export class BasicValidators {
   }
   static validateFabricationDate (control: FormControl) {
     if (control.value) {
-        const perishable = control.parent.get('perishable').value
-        const validityDate = new Date(control.parent.get('validity_date').value.split('/').reverse().join('-'))
-        const fabricationDate = new Date(control.value.split('/').reverse().join('-'));
-        if (perishable && fabricationDate > validityDate) {
-          return {
-            validityFabricationDate: {
-              valid: false
+        let validityDate = control.parent.get('validity_date').value;
+        if (validityDate) {
+            validityDate = new Date(validityDate.split('/').reverse().join('-'));
+            const perishable = control.parent.get('perishable').value;
+            const fabricationDate = new Date(control.value.split('/').reverse().join('-'));
+            if (perishable && fabricationDate > validityDate) {
+                return {
+                    validityFabricationDate: {
+                        valid: false
+                    }
+                };
             }
-          };
         }
     }
     return null;
