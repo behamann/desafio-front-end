@@ -10,7 +10,11 @@ export class ProductsService {
   constructor() { }
 
   getProducts() {
-    return JSON.parse(localStorage.getItem('products'));
+    const products = JSON.parse(localStorage.getItem('products'));
+    if (products) {
+      return products;
+    }
+    return [];
   }
 
   getProduct(id) {
